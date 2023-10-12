@@ -2,7 +2,7 @@ export const episodes = [
   {
     id: 4952,
     url: "https://www.tvmaze.com/episodes/4952/game-of-thrones-1x01-winter-is-coming",
-    name: "Winter is Coming",
+    name: "first episode",
     season: 1,
     number: 1,
     type: "regular",
