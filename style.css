@@ -1,28 +1,36 @@
 html {
-    font-family: "Lato", sans-serif;
-    font-size: 20px;
-    background: #333;
-    color: white;
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  background: #333;
+  color: white;
 }
 
 .big {
-    font-size: 4rem;
-    font-family: "Abril Fatface", cursive;
-    text-decoration: overline;
-    text-align: center;
+  font-size: 4rem;
+  font-family: "Abril Fatface", cursive;
+  text-decoration: overline;
+  text-align: center;
 }
 
 body {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-li {
-    margin: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 #focusedCharacterPara {
-    border-bottom: 1px solid white;
-    /* border-radius: 4px; */
-    padding: 1rem;
+  border-bottom: 1px solid white;
+  /* border-radius: 4px; */
+  padding: 1rem;
+}
+
+.episodes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.episode {
+  margin: 10px;
+  display: flex-box;
+  background-color: dodgerblue;
+  color: white;
+  padding: 1rem;
 }
