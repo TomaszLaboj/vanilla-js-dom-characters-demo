@@ -4,11 +4,11 @@ const fetchEpisodes = () => {
   return fetch(tvMazeUrl).then((response) => response.json());
 };
 
-const listOfEpisodes = getElementByIdOrFail("episodesUL");
+const listOfEpisodes = getElementByIdOrFail("episodesDIV");
 
 function createListOfEpisodes(episodes) {
   return episodes.map((episode) => {
-    const element = document.createElement("li");
+    const element = document.createElement("div");
     element.setAttribute("key", episode.id);
     element.setAttribute("class", "episode");
     const name = document.createElement("h3");
@@ -38,8 +38,8 @@ function addImage(imgUrl) {
 
 fetchEpisodes().then((episodes) => {
   const episodeLiElements = createListOfEpisodes(episodes);
-  for (const li of episodeLiElements) {
-    listOfEpisodes.appendChild(li);
+  for (const ep of episodeLiElements) {
+    listOfEpisodes.appendChild(ep);
   }
 });
 
