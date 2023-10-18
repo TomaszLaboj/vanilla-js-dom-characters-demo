@@ -1,10 +1,9 @@
-import { getElementByIdOrFail } from "./utils.js";
-const tvMazeUrl = "https://api.tvmaze.com/shows/1250/episodes";
+const tvMazeUrl = `https://api.tvmaze.com/shows/${showId}/episodes`;
 const fetchEpisodes = () => {
   return fetch(tvMazeUrl).then((response) => response.json());
 };
 
-const listOfEpisodes = getElementByIdOrFail("episodesDIV");
+const listOfEpisodes = document.getElementById("episodesDIV");
 
 function createListOfEpisodes(episodes) {
   return episodes.map((episode) => {

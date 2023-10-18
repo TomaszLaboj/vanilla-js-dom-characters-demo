@@ -4,6 +4,10 @@ function createSearchResult(shows) {
   return shows.map((show) => {
     const element = document.createElement("div");
     element.innerHTML = show.show.name;
+    const btn = document.createElement("button");
+    btn.textContent = "show info";
+    btn.addEventListener("click", () => displayShow(show.show.id));
+    element.appendChild(btn);
     return element;
   });
 }
@@ -15,8 +19,12 @@ const fetchShows = () => {
 
 fetchShows().then((data) => {
   const listOfShowNames = createSearchResult(data);
-  console.log("after list of shows", listOfShowNames);
+
   for (const show of listOfShowNames) {
     searchResult.appendChild(show);
   }
 });
+
+const displayShow = (showId) => {
+  console.log("the show is ", showId);
+};
