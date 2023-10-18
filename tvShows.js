@@ -1,5 +1,5 @@
 import { getElementByIdOrFail } from "./utils.js";
-const tvMazeUrl = "https://api.tvmaze.com/shows/82/episodes";
+const tvMazeUrl = "https://api.tvmaze.com/shows/1250/episodes";
 const fetchEpisodes = () => {
   return fetch(tvMazeUrl).then((response) => response.json());
 };
