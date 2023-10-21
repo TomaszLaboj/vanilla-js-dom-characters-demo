@@ -1,3 +1,4 @@
+const showId = 1;
 const tvMazeUrl = `https://api.tvmaze.com/shows/${showId}/episodes`;
 const fetchEpisodes = () => {
   return fetch(tvMazeUrl).then((response) => response.json());
