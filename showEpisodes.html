@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fictional Characters (JS + DOM)</title>
+    <title>TV Shows (vanilla JS)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,11 +15,16 @@
   </head>
   <body>
     <div>
-      <p class="big">Fictional characters</p>
-      <p id="focusedCharacterPara">Selected character will be displayed here</p>
-      <ul id="charactersUL"></ul>
-      <button id="myButton1">Click me</button>
+      <p>
+        Taken from:
+        <a style="color: white" href="https://tvmaze.com/">tvmaze.com</a>
+      </p>
+
+      <a style="color: white" href="index.html">Go back to search</a>
+      <p class="big">TV Shows</p>
+      <div class="showTitle" id="showTitle"></div>
+      <div class="tv-shows" id="episodesDIV"></div>
     </div>
-    <script type="module" src="myScript.js"></script>
+    <script type="module" src="showEpisodes.js"></script>
   </body>
 </html>

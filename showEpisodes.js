@@ -1,10 +1,24 @@
-const showId = 1;
-const tvMazeUrl = `https://api.tvmaze.com/shows/${showId}/episodes`;
+const searchShowId = getCookie(document.cookie);
+
+const tvMazeUrl = `https://api.tvmaze.com/shows/${searchShowId}/episodes`;
 const fetchEpisodes = () => {
   return fetch(tvMazeUrl).then((response) => response.json());
 };
 
+const fetchTitle = () => {
+  return fetch(`https://api.tvmaze.com/shows/${searchShowId}`).then(
+    (response) => response.json()
+  );
+};
+
 const listOfEpisodes = document.getElementById("episodesDIV");
+const showTitleElement = document.getElementById("showTitle");
+
+function showTitle(title) {
+  const titleElement = document.createElement("p");
+  titleElement.innerHTML = title;
+  showTitleElement.appendChild(titleElement);
+}
 
 function createListOfEpisodes(episodes) {
   return episodes.map((episode) => {
@@ -36,6 +50,11 @@ function addImage(imgUrl) {
   return imageElement;
 }
 
+fetchTitle().then((data) => {
+  console.log(data);
+  showTitle(data.name);
+});
+
 fetchEpisodes().then((episodes) => {
   const episodeLiElements = createListOfEpisodes(episodes);
   for (const ep of episodeLiElements) {
@@ -57,4 +76,8 @@ function displaySeasonEpisodeCode(seasonNumber, episodeNumber) {
     episodeCode = "E" + episodeNumber.toString();
   }
   return seasonCode + episodeCode;
+}
+
+function getCookie(cookie) {
+  return cookie.substring(cookie.indexOf("=") + 1);
 }

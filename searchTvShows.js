@@ -26,5 +26,8 @@ fetchShows().then((data) => {
 });
 
 const displayShow = (showId) => {
-  console.log("the show is ", showId);
+  document.cookie =
+    "clickedShowId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+  document.cookie = `clickedShowId=${showId};path=/`;
+  location.assign("showEpisodes.html");
 };
