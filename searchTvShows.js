@@ -1,10 +1,4 @@
-const searchTvShowsUrl = "https://api.tvmaze.com/search/shows?q=star trek";
-
-const fetchShows = () => {
-  return fetch(searchTvShowsUrl).then((response) => response.json());
-};
-
-let searchBar = document.getElementById("searchTvShows");
+let searchBarElement = document.getElementById("searchTvShows");
 let searchResult = document.getElementById("searchResult");
 
 function createSearchResult(shows) {
@@ -19,20 +13,31 @@ function createSearchResult(shows) {
   });
 }
 
-fetchShows().then((data) => {
-  const listOfShowNames = createSearchResult(data);
-
-  for (const show of listOfShowNames) {
-    searchResult.appendChild(show);
-  }
-});
-
 const displaySearchBar = () => {
   const inputBox = document.createElement("input");
+  inputBox.setAttribute("id", "inputBox");
   const searchButton = document.createElement("button");
   searchButton.innerHTML = "Search";
-  searchBar.appendChild(inputBox);
-  searchBar.appendChild(searchButton);
+  searchButton.setAttribute("id", "searchButton");
+  searchButton.addEventListener("click", () => {
+    const searchTerm = inputBox.value;
+    console.log(inputBox.value);
+    const searchTvShowsUrl = `https://api.tvmaze.com/search/shows?q=${searchTerm}`;
+
+    const fetchShows = () => {
+      return fetch(searchTvShowsUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          const listOfShowNames = createSearchResult(data);
+          for (const show of listOfShowNames) {
+            searchResult.appendChild(show);
+          }
+        });
+    };
+    fetchShows();
+  });
+  searchBarElement.appendChild(inputBox);
+  searchBarElement.appendChild(searchButton);
 };
 displaySearchBar();
 
