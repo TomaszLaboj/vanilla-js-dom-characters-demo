@@ -1,4 +1,11 @@
-let searchResult = document.getElementById("searchTvShows");
+const searchTvShowsUrl = "https://api.tvmaze.com/search/shows?q=star trek";
+
+const fetchShows = () => {
+  return fetch(searchTvShowsUrl).then((response) => response.json());
+};
+
+let searchBar = document.getElementById("searchTvShows");
+let searchResult = document.getElementById("searchResult");
 
 function createSearchResult(shows) {
   return shows.map((show) => {
@@ -12,11 +19,6 @@ function createSearchResult(shows) {
   });
 }
 
-const searchTvShowsUrl = "https://api.tvmaze.com/search/shows?q=star trek";
-const fetchShows = () => {
-  return fetch(searchTvShowsUrl).then((response) => response.json());
-};
-
 fetchShows().then((data) => {
   const listOfShowNames = createSearchResult(data);
 
@@ -24,6 +26,15 @@ fetchShows().then((data) => {
     searchResult.appendChild(show);
   }
 });
+
+const displaySearchBar = () => {
+  const inputBox = document.createElement("input");
+  const searchButton = document.createElement("button");
+  searchButton.innerHTML = "Search";
+  searchBar.appendChild(inputBox);
+  searchBar.appendChild(searchButton);
+};
+displaySearchBar();
 
 const displayShow = (showId) => {
   document.cookie =
